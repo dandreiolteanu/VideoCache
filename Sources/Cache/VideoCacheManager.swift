@@ -184,14 +184,14 @@ extension VideoCacheManager {
         let videoPath = paths.videoPath(for: url)
         
         let cleanAllClosure = { [weak self] in
-            try FileM.removeItem(atPath: infoPath)
-            try FileM.removeItem(atPath: configPath)
-            try FileM.removeItem(atPath: videoPath)
+            try? FileM.removeItem(atPath: infoPath)
+            try? FileM.removeItem(atPath: configPath)
+            try? FileM.removeItem(atPath: videoPath)
             self?.lru.delete(url: url)
         }
         
         guard let config = paths.configuration(for: infoPath) else {
-            try cleanAllClosure()
+            cleanAllClosure()
             return
         }
         
@@ -199,17 +199,17 @@ extension VideoCacheManager {
         
         guard reservedLength > 0
             else {
-            try cleanAllClosure()
+            cleanAllClosure()
             return
         }
         
         guard reserve else {
-            try cleanAllClosure()
+            cleanAllClosure()
             return
         }
         
         guard let fileHandle = FileHandle(forUpdatingAtPath: videoPath) else {
-            try cleanAllClosure()
+            cleanAllClosure()
             return
         }
         
@@ -219,7 +219,7 @@ extension VideoCacheManager {
             try fileHandle.throwError_synchronizeFile()
             try fileHandle.throwError_closeFile()
         } catch {
-            try cleanAllClosure()
+            cleanAllClosure()
         }
     }
     
