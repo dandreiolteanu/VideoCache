@@ -163,7 +163,7 @@ class LRUContent: NSObject, NSCoding {
     }
     
     override var description: String {
-        return ["time": time, "count": count, "weight": weight, "url": url].description
+        (["time": time, "count": count, "weight": weight, "url": url] as [String: Any]).description
     }
     
     required init?(coder aDecoder: NSCoder) {
