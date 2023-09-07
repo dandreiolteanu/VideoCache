@@ -30,7 +30,7 @@ extension VURL: VideoURLType {
     }
     
     public var includeVideoCacheSchemeUrl: URL {
-        url.appendingPathComponent(URL.VideoCacheScheme)        
+        URL(string: url.absoluteString + URL.VideoCacheScheme) ?? url
     }
 }
 
