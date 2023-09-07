@@ -68,7 +68,7 @@ class VideoConfiguration: NSObject, NSCoding {
     private let lock = NSLock()
     
     override var description: String {
-        return ["url": url, "contentInfo": contentInfo, "reservedLength": reservedLength, "lastTimeInterval": lastTimeInterval, "fragments": fragments].description
+        (["url": url, "contentInfo": contentInfo, "reservedLength": reservedLength, "lastTimeInterval": lastTimeInterval, "fragments": fragments] as [String: Any]).description
     }
 }
 

@@ -53,6 +53,6 @@ class ContentInfo: NSObject, NSCoding {
     }
     
     override var description: String {
-        return ["type": type, "byteRangeAccessSupported": byteRangeAccessSupported, "totalLength": totalLength].description
+        (["type": type, "byteRangeAccessSupported": byteRangeAccessSupported, "totalLength": totalLength] as [String: Any]).description
     }
 }

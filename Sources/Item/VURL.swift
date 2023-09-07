@@ -58,6 +58,6 @@ class VURL: NSObject, NSCoding {
     }
     
     override var description: String {
-        return ["cacheKey": cacheKey, "originUrl": originUrl].description
+        (["cacheKey": cacheKey, "originUrl": originUrl] as [String : Any]).description
     }
 }
