@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   # Version
   s.version       = "1.4.0"
-  s.swift_version = '5.8'
+  s.swift_version = '5.9'
 
   # Meta
   s.name         = "AVPlayerItemCaching"
