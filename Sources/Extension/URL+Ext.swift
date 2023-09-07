@@ -14,14 +14,14 @@ extension URL {
     static let VideoCacheScheme = "__VideoCache__:"
     
     var isCacheScheme: Bool {
-        return absoluteString.hasPrefix(URL.VideoCacheScheme)
+        absoluteString.contains(URL.VideoCacheScheme)
     }
     
     var originUrl: URL {
-        return URL(string: absoluteString.replacingOccurrences(of: URL.VideoCacheScheme, with: "")) ?? self
+        URL(string: absoluteString.replacingOccurrences(of: URL.VideoCacheScheme, with: "")) ?? self
     }
     
     var contentType: String? {
-        return UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, pathExtension as CFString, nil)?.takeRetainedValue() as String?
+        UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, pathExtension as CFString, nil)?.takeRetainedValue() as String?
     }
 }
